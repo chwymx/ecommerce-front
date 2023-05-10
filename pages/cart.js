@@ -26,34 +26,38 @@ const Box = styled.div`
 
 const ProductInfoCell = styled.td`
   padding: 10px 0;
+  padding-left: 10px;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ProductImageBox = styled.div`
-  width: 70px;
-  height: 100px;
-  padding: 2px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 60px;
+  height: 60px;
+  padding: 20px 0;
+  border: 10px solid rgba(0, 0, 0, 0);
   display:flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 20px;
   img{
     max-width: 60px;
     max-height: 60px;
   }
+  
   @media screen and (min-width: 768px) {
-    padding: 10px;
-    width: 100px;
-    height: 100px;
+    padding: 1px;
+    width: 150px;
+    height: 150px;
     img{
-      max-width: 80px;
-      max-height: 80px;
+      max-width: 150px;
+      max-height: 150px;
     }
   }
 `;
 
 const QuantityLabel = styled.span`
-  padding: 0 15px;
+  padding: 0 10px;
   display: block;
   @media screen and (min-width: 768px) {
     display: inline-block;
@@ -157,16 +161,19 @@ export default function CartPage() {
                         <ProductImageBox>
                           <img src={product.images[0]} alt=""/>
                         </ProductImageBox>
+
                         {product.title}
+
                       </ProductInfoCell>
                       <td>
                         <Button
-                          onClick={() => lessOfThisProduct(product._id)}>-</Button>
+                          onClick={() => moreOfThisProduct(product._id)}>+</Button>
                         <QuantityLabel>
                           {cartProducts.filter(id => id === product._id).length}
                         </QuantityLabel>
                         <Button
-                          onClick={() => moreOfThisProduct(product._id)}>+</Button>
+                          onClick={() => lessOfThisProduct(product._id)}>-</Button>
+                        
                       </td>
                       <td>
                         ${cartProducts.filter(id => id === product._id).length * product.price}
